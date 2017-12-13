@@ -14,6 +14,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Mvvm.Tests", "Spectre.Mvvm.Tests\Spectre.Mvvm.Tests.csproj", "{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Service", "Spectre.Service\Spectre.Service.csproj", "{287A1A8D-C029-4D47-96BC-755C91B7985D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B5B60F79-653C-4E41-9721-06C478CE9E7C} = {B5B60F79-653C-4E41-9721-06C478CE9E7C}
+		{70C87AF7-3189-4F6C-AC85-93309CF7CFDC} = {70C87AF7-3189-4F6C-AC85-93309CF7CFDC}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Service.Tests", "Spectre.Service.Tests\Spectre.Service.Tests.csproj", "{1D79FD14-1DF4-4AED-94DF-62E595206DEF}"
 EndProject

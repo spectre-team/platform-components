@@ -1,4 +1,26 @@
 version: 3.0.0.{build}
+
+init:
+- cmd: echo Project - %APPVEYOR_PROJECT_NAME%
+- cmd: echo Worker image - %APPVEYOR_BUILD_WORKER_IMAGE%
+- cmd: echo Branch - %APPVEYOR_REPO_BRANCH%
+- cmd: echo Author - %APPVEYOR_REPO_COMMIT_AUTHOR%
+- cmd: echo Commit - %APPVEYOR_REPO_COMMIT%
+#- cmd: echo (%APPVEYOR_REPO_COMMIT_MESSAGE%)
+#- cmd: echo (%APPVEYOR_REPO_COMMIT_MESSAGE_EXTENDED%)
+- cmd: echo Platform - %PLATFORM%
+- cmd: echo Configuration - %CONFIGURATION%
+- cmd: IF %APPVEYOR_REPO_BRANCH%=='develop' (SET APPVEYOR_BUILD_VERSION=%APPVEYOR_BUILD_VERSION%-beta)
+- cmd: echo Version - %APPVEYOR_BUILD_VERSION%
+#- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+nuget:
+  account_feed: false
+  project_feed: false
+
+install:
+- cmd: C:\projects\platform-components\scripts\restore_nugets.bat
+
 # enable patching of AssemblyInfo.* files
 assembly_info:
   patch: true
@@ -21,44 +43,59 @@ configuration:
 # skip branch build if there is an active pull request
 skip_branch_with_pr: true
 
-init:
-- cmd: echo Project - %APPVEYOR_PROJECT_NAME%
-- cmd: echo Worker image - %APPVEYOR_BUILD_WORKER_IMAGE%
-- cmd: echo Branch - %APPVEYOR_REPO_BRANCH%
-- cmd: echo Author - %APPVEYOR_REPO_COMMIT_AUTHOR%
-- cmd: echo Commit - %APPVEYOR_REPO_COMMIT%
-#- cmd: echo (%APPVEYOR_REPO_COMMIT_MESSAGE%)
-#- cmd: echo (%APPVEYOR_REPO_COMMIT_MESSAGE_EXTENDED%)
-- cmd: echo Platform - %PLATFORM%
-- cmd: echo Configuration - %CONFIGURATION%
-#- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-
-nuget:
-  account_feed: false
-  project_feed: false
-
-install:
-- cmd: C:\projects\platform-components\scripts\restore_nugets.bat
-
-build_script:
-- cmd: msbuild "C:\projects\platform-components\src\platform-components.sln" /p:Configuration=%CONFIGURATION% /p:Platform=%PLATFORM% /m /verbosity:quiet /p:DeployOnBuild=true /p:PublishProfile=%CONFIGURATION% /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
-after_build:
-- cmd: C:\projects\platform-components\scripts\package_project.bat DataValidatorApp Spectre.DataValidatorApp
-
-test_script:
-- cmd: C:\projects\platform-components\scripts\test_dotnet.bat --except Algorithm
+build:
+  parallel: true
+  project: .\src\platform-components.sln
+  publish_nuget: true
+  publish_nuget_symbols: true
+  verbosity: quiet
 
 artifacts:
-- path: DataValidatorApp-$(configuration).zip
-  name: DataValidatorExecutables
+- path: .\src\Spectre.DataValidatorApp\bin\$(platform)\$(configuration)
+  name: DataValidator-$(configuration)
+- path: .\docs\*.pdf
+  name: Manuals
 
 deploy:
-- provider: GitHub
-  release: platform-components-v$(appveyor_build_version)
-  auth_token:
-    secure: dQadz+smqtuxpigZ/LmrUKyA0uVZ5kgljKntyoHEdobTycbeMywbfmiJtZPNcOQ2
-  artifact: DataValidatorExecutables
-  draft: true
+  # push all packed apps to GitHub releases
+  - provider: GitHub
+    release: platform-components-v$(appveyor_build_version)
+    auth_token:
+      secure: dQadz+smqtuxpigZ/LmrUKyA0uVZ5kgljKntyoHEdobTycbeMywbfmiJtZPNcOQ2
+    artifact: /.*\.zip/
+    draft: true
+  # push all NuGet-s to GitHub releases
+  - provider: GitHub
+    release: platform-components-v$(appveyor_build_version)
+    auth_token:
+      secure: dQadz+smqtuxpigZ/LmrUKyA0uVZ5kgljKntyoHEdobTycbeMywbfmiJtZPNcOQ2
+    artifact: /.*\.nupkg/
+    draft: true
+  # push all manuals to GitHub releases
+  - provider: GitHub
+    release: platform-components-v$(appveyor_build_version)
+    auth_token:
+      secure: dQadz+smqtuxpigZ/LmrUKyA0uVZ5kgljKntyoHEdobTycbeMywbfmiJtZPNcOQ2
+    artifact: Manuals
+    on:
+      branch:
+        - master
+        - develop
+      configuration: Release
+    draft: true
+  # push all NuGet-s to our feed
+  - provider: NuGet
+    server: https://ci.appveyor.com/nuget/gmrukwa-xfn7vhwq20u6
+    api_key:
+      secure: t8FO9T5wMCmRVqjBKL+8u6wmF+EPGJ8NDgcZoH7hbk4=
+    skip_symbols: false
+    symbol_server: https://ci.appveyor.com/nuget/gmrukwa-xfn7vhwq20u6
+    artifact: /.*\.nupkg/
+    on:
+      branch:
+        - master
+        - develop
+      configuration: Release
 
 on_finish:
 #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
