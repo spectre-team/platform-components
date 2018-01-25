@@ -52,7 +52,6 @@ build:
 
 after_build:
   - cmd: nuget pack C:\projects\platform-components\src\Spectre.Service\Spectre.Service.csproj -IncludeReferencedProjects -Version %APPVEYOR_BUILD_VERSION%
-  - cmd: nuget pack C:\projects\platform-components\src\Spectre.Mvvm\Spectre.Mvvm.csproj -IncludeReferencedProjects -Version %APPVEYOR_BUILD_VERSION%
   - cmd: rmdir /s /q C:\projects\platform-components\src\packages
 
 

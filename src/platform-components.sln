@@ -1,17 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Data", "Spectre.Data\Spectre.Data.csproj", "{70C87AF7-3189-4F6C-AC85-93309CF7CFDC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Data.Tests", "Spectre.Data.Tests\Spectre.Data.Tests.csproj", "{01391E76-3D20-4B4B-B727-2A133B35A144}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks", "Frameworks", "{7EAC5FD7-C9CD-42E8-A24B-3665E854F4CD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Mvvm", "Spectre.Mvvm\Spectre.Mvvm.csproj", "{2D24F1E7-18D4-4FC0-9E4F-2F32FF27FCCE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Mvvm.Tests", "Spectre.Mvvm.Tests\Spectre.Mvvm.Tests.csproj", "{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Service", "Spectre.Service\Spectre.Service.csproj", "{287A1A8D-C029-4D47-96BC-755C91B7985D}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -50,14 +44,6 @@ Global
 		{01391E76-3D20-4B4B-B727-2A133B35A144}.Debug|x64.Build.0 = Debug|x64
 		{01391E76-3D20-4B4B-B727-2A133B35A144}.Release|x64.ActiveCfg = Release|x64
 		{01391E76-3D20-4B4B-B727-2A133B35A144}.Release|x64.Build.0 = Release|x64
-		{2D24F1E7-18D4-4FC0-9E4F-2F32FF27FCCE}.Debug|x64.ActiveCfg = Debug|x64
-		{2D24F1E7-18D4-4FC0-9E4F-2F32FF27FCCE}.Debug|x64.Build.0 = Debug|x64
-		{2D24F1E7-18D4-4FC0-9E4F-2F32FF27FCCE}.Release|x64.ActiveCfg = Release|x64
-		{2D24F1E7-18D4-4FC0-9E4F-2F32FF27FCCE}.Release|x64.Build.0 = Release|x64
-		{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC}.Debug|x64.ActiveCfg = Debug|x64
-		{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC}.Debug|x64.Build.0 = Debug|x64
-		{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC}.Release|x64.ActiveCfg = Release|x64
-		{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC}.Release|x64.Build.0 = Release|x64
 		{287A1A8D-C029-4D47-96BC-755C91B7985D}.Debug|x64.ActiveCfg = Debug|x64
 		{287A1A8D-C029-4D47-96BC-755C91B7985D}.Debug|x64.Build.0 = Debug|x64
 		{287A1A8D-C029-4D47-96BC-755C91B7985D}.Release|x64.ActiveCfg = Release|x64
@@ -87,8 +73,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{2D24F1E7-18D4-4FC0-9E4F-2F32FF27FCCE} = {7EAC5FD7-C9CD-42E8-A24B-3665E854F4CD}
-		{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC} = {7EAC5FD7-C9CD-42E8-A24B-3665E854F4CD}
 		{3D932849-312C-473C-B74C-ABD1F11A0739} = {CCEC918E-827A-4FDF-9BEB-4E7C8D045DBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
