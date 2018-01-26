@@ -34,19 +34,19 @@ namespace Spectre.Data.Structures
         /// <param name="name">The name.</param>
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>
-        /// <param name="roiPixels">The roipixel.</param>
-        public Roi(string name, uint width, uint height, IList<RoiPixel> roiPixels)
+        /// <param name="pixels">The roipixel.</param>
+        public Roi(string name, uint width, uint height, IList<RoiPixel> pixels)
         {
             Name = name;
             Width = width;
             Height = height;
 
-            if (roiPixels.Any(r => r.XCoordinate > width) || roiPixels.Any(r => r.YCoordinate > height))
+            if (pixels.Any(r => r.XCoordinate > width) || pixels.Any(r => r.YCoordinate > height))
             {
                 throw new ArgumentOutOfRangeException("Given roi pixels cannot exceed specified dimensions.");
             }
 
-            RoiPixels = roiPixels;
+            Pixels = pixels;
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Spectre.Data.Structures
         /// <value>
         /// The roi pixels.
         /// </value>
-        public IList<RoiPixel> RoiPixels { get; }
+        public IList<RoiPixel> Pixels { get; }
 
         /// <summary>
         /// Gets the name.
