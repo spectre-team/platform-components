@@ -1,6 +1,7 @@
 image: Visual Studio 2017
-platform:
-- Any CPU
+# Kept implicit due to test discovery problems
+#platform:
+#- Any CPU
 environment:
   nuget_user:
     secure: kWtlS49bKmP0IFXmdvDHmxGI8mS0xQGrwiJoco9nYtA=
