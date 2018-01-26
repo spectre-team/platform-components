@@ -40,8 +40,22 @@ namespace Spectre.Service.Deprecated.Tests.Io
         private readonly string _cacheDir = "cache";
         private readonly string _remoteDir = "remote";
 
-        private readonly string _fileDir = $"{TestContext.CurrentContext.TestDirectory} + "
-                                           + @"\..\..\..\..\..\test_files";
+        private const string TestDirectoryName = "test_files";
+
+        private static string FindTestDirectory(string current = null)
+        {
+            current = current ?? Directory.GetCurrentDirectory();
+            var expectedLocation = Path.Combine(current, TestDirectoryName);
+            if (Directory.Exists(expectedLocation))
+            {
+                return expectedLocation;
+            }
+
+            return FindTestDirectory(Path.Combine(current, ".."));
+        }
+
+        private readonly string _fileDir = FindTestDirectory(TestContext.CurrentContext.TestDirectory);
+
         [OneTimeSetUp]
         public void SetUp()
         {

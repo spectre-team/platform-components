@@ -33,14 +33,26 @@ namespace Spectre.Data.Deprecated.Tests.Datasets
         private IDataset _dataset;
         private string _startDirectory;
 
-        private readonly string TestDirectory = TestContext.CurrentContext.TestDirectory
-                                                + "\\..\\..\\..\\..\\..\\test_files";
+        private const string TestDirectoryName = "test_files";
+
+        private static string FindTestDirectory(string current = null)
+        {
+            current = current ?? Directory.GetCurrentDirectory();
+            var expectedLocation = Path.Combine(current, TestDirectoryName);
+            if (Directory.Exists(expectedLocation))
+            {
+                return expectedLocation;
+            }
+
+            return FindTestDirectory(Path.Combine(current, ".."));
+        }
 
         [OneTimeSetUp]
         public void SetUpFixture()
         {
             _startDirectory = Directory.GetCurrentDirectory();
-            Directory.SetCurrentDirectory(TestDirectory);
+            var testFilesDirectory = FindTestDirectory(TestContext.CurrentContext.TestDirectory);
+            Directory.SetCurrentDirectory(testFilesDirectory);
         }
 
         [OneTimeTearDown]

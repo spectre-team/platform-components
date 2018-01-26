@@ -7,10 +7,22 @@ namespace Spectre.Data.Deprecated.Tests
 {
     public static class DataStub
     {
-        static readonly string path = Path.Combine(TestContext.CurrentContext.TestDirectory, ".." , "..", "..", "..", "..", "test_files","Rois");
-        public static string TestDirectoryPath = Path.GetFullPath(DataStub.path);
-        public static string TestReadFilePath = Path.Combine(DataStub.TestDirectoryPath, "image1.png");
-        public static string TestWriteFilePath = Path.Combine(DataStub.TestDirectoryPath, "writetestfile.png");
+        private static string FindTestDirectory(string current = null)
+        {
+            current = current ?? Directory.GetCurrentDirectory();
+            var expectedLocation = System.IO.Path.Combine(current, "test_files", "Rois");
+            if (Directory.Exists(expectedLocation))
+            {
+                return expectedLocation;
+            }
+
+            return FindTestDirectory(System.IO.Path.Combine(current, ".."));
+        }
+
+        static readonly string Path = FindTestDirectory(TestContext.CurrentContext.TestDirectory);
+        public static string TestDirectoryPath = System.IO.Path.GetFullPath(DataStub.Path);
+        public static string TestReadFilePath = System.IO.Path.Combine(DataStub.TestDirectoryPath, "image1.png");
+        public static string TestWriteFilePath = System.IO.Path.Combine(DataStub.TestDirectoryPath, "writetestfile.png");
         public static int ExpectedNumberOfRoisInDirectory = 3;
 
         public static Roi ReadRoiDataset = new Roi("image1", 6, 6, new List<RoiPixel>
