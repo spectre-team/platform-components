@@ -29,8 +29,8 @@ namespace Spectre.Data.Conversions
     /// </summary>
     public class RoiConverter
     {
-        private static readonly Rgba32 _roiColor = Rgba32.Black;
-        private static readonly Rgba32 _defaultColor = Rgba32.White;
+        private static readonly Rgba32 RoiColor = Rgba32.Black;
+        private static readonly Rgba32 DefaultColor = Rgba32.White;
 
         /// <summary>
         /// Bitmap to roi converter.
@@ -53,7 +53,7 @@ namespace Spectre.Data.Conversions
                 for (int ycoordinate = 0; ycoordinate < bitmap.Height; ycoordinate++)
                 {
                     var color = bitmap[xcoordinate, ycoordinate];
-                    if (color.Equals(_roiColor))
+                    if (color.Equals(RoiColor))
                     {
                         roidataset.Pixels.Add(new RoiPixel(xcoordinate, ycoordinate));
                     }
@@ -73,12 +73,12 @@ namespace Spectre.Data.Conversions
         public Image<Rgba32> RoiToBitmap(Roi roi)
         {
             var bitmap = new Image<Rgba32>((int)roi.Width, (int)roi.Height);
-            var backgroundBrush = new SolidBrush<Rgba32>(_defaultColor);
+            var backgroundBrush = new SolidBrush<Rgba32>(DefaultColor);
             bitmap.Mutate(context => context.Fill(backgroundBrush));
             
             foreach (var pixel in roi.Pixels)
             {
-                bitmap[pixel.XCoordinate, pixel.YCoordinate] = _roiColor;
+                bitmap[pixel.XCoordinate, pixel.YCoordinate] = RoiColor;
             }
 
             return bitmap;
