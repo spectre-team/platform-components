@@ -17,4 +17,8 @@
     <DocumentationFile>bin\Debug\netcoreapp2.0\Spectre.Data.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.IO.Abstractions" Version="2.1.0.178" />
+  </ItemGroup>
+
 </Project>
