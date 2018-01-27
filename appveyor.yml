@@ -24,10 +24,10 @@ init:
 - cmd: echo Branch - %APPVEYOR_REPO_BRANCH%
 - cmd: echo Author - %APPVEYOR_REPO_COMMIT_AUTHOR%
 - cmd: echo Commit - %APPVEYOR_REPO_COMMIT%
-- cmd: echo Platform - %PLATFORM%
 - cmd: echo Configuration - %CONFIGURATION%
-- cmd: IF NOT "%APPVEYOR_PULL_REQUEST_NUMBER%"=="" (SET APPVEYOR_BUILD_VERSION=%APPVEYOR_BUILD_VERSION%-alpha) ELSE IF "%APPVEYOR_REPO_BRANCH%"=="develop" (SET APPVEYOR_BUILD_VERSION=%APPVEYOR_BUILD_VERSION%-beta) ELSE IF NOT "%APPVEYOR_REPO_BRANCH%"=="master" (SET APPVEYOR_BUILD_VERSION=%APPVEYOR_BUILD_VERSION%-alpha)
 - cmd: echo Version - %APPVEYOR_BUILD_VERSION%
+- cmd: IF NOT "%APPVEYOR_PULL_REQUEST_NUMBER%"=="" (SET VERSION_SUFFIX=-alpha) ELSE IF "%APPVEYOR_REPO_BRANCH%"=="develop" (SET VERSION_SUFFIX=-beta) ELSE IF NOT "%APPVEYOR_REPO_BRANCH%"=="master" (SET VERSION_SUFFIX=-alpha)
+- cmd: echo Version suffix - %VERSION_SUFFIX%
 #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 # Here comes automated git clone by AppVeyor
@@ -49,8 +49,8 @@ assembly_info:
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
-  version: '{version}'
-  package_version: '{version}'
+  version: '{version}$(version_suffix)'
+  package_version: '{version}$(version_suffix)'
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
@@ -63,7 +63,6 @@ build:
   verbosity: quiet
 
 after_build:
-#  - cmd: nuget pack C:\projects\platform-components\src\Spectre.Service\Spectre.Service.csproj -IncludeReferencedProjects -Version %APPVEYOR_BUILD_VERSION%
   - cmd: rmdir /s /q C:\projects\platform-components\src\packages
 
 

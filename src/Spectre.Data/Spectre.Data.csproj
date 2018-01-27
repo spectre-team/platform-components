@@ -3,6 +3,21 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <ApplicationIcon>Spectre.ico</ApplicationIcon>
+    <SignAssembly>false</SignAssembly>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>The Spectre Team</Authors>
+    <Company>The Spectre Team</Company>
+    <Description>Data access layer for datasets and its ROIs.</Description>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.zaed.aei.polsl.pl/index.php/pl/53-laboratorium-5</PackageProjectUrl>
+    <PackageIconUrl>https://user-images.githubusercontent.com/1897842/35470997-bcc4d00e-0353-11e8-81ff-9e1a26a615b8.jpg</PackageIconUrl>
+    <RepositoryUrl>https://github.com/spectre-team/platform-components</RepositoryUrl>
+    <VersionPrefix>4.0.0</VersionPrefix>
+    <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <FileVersion>4.0.0.0</FileVersion>
+	<PackageVersion>4.0.0.0</PackageVersion>
+	<Copyright>The Spectre Team</Copyright>
+	<Version>4.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
