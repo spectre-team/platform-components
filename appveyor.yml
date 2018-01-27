@@ -61,12 +61,22 @@ build:
   verbosity: quiet
 
 after_build:
-  - cmd: rmdir /s /q C:\projects\platform-components\src\packages
-
+  - cmd: SET VALIDATOR=src\Spectre.DataValidatorApp\Spectre.DataValidatorApp.csproj
+  - cmd: SET OPTIONS=--self-contained --verbosity quiet
+  - cmd: dotnet publish %VALIDATOR% %OPTIONS% -r win10-x64
+  - cmd: dotnet publish %VALIDATOR% %OPTIONS% -r win7-x86
+  - cmd: dotnet publish %VALIDATOR% %OPTIONS% -r osx.10.11-x64
+  - cmd: dotnet publish %VALIDATOR% %OPTIONS% -r ubuntu.16.10-x64
 
 artifacts:
-#- path: .\src\Spectre.DataValidatorApp\bin\$(platform)\$(configuration)
-#  name: DataValidator-$(configuration)
+- path: .\src\Spectre.DataValidatorApp\bin\$(configuration)\netcoreapp2.0\win10-x64\publish
+  name: DataValidator-$(configuration)-self-contained-win10-x64
+- path: .\src\Spectre.DataValidatorApp\bin\$(configuration)\netcoreapp2.0\win7-x86\publish
+  name: DataValidator-$(configuration)-self-contained-win7-x86
+- path: .\src\Spectre.DataValidatorApp\bin\$(configuration)\netcoreapp2.0\osx.10.11-x64\publish
+  name: DataValidator-$(configuration)-self-contained-osx.10.11-x64
+- path: .\src\Spectre.DataValidatorApp\bin\$(configuration)\netcoreapp2.0\ubuntu.16.10-x64\publish
+  name: DataValidator-$(configuration)-self-contained-ubuntu.16.10-x64
 #- path: .\docs\*.pdf
 #  name: Manuals
 - path: '**\*.nupkg'
