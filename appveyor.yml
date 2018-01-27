@@ -60,13 +60,21 @@ build:
   project: .\src\platform-components.sln
   verbosity: quiet
 
-after_build:
+after_test:
   - cmd: SET VALIDATOR=src\Spectre.DataValidatorApp\Spectre.DataValidatorApp.csproj
   - cmd: SET OPTIONS=--self-contained --verbosity quiet
   - cmd: dotnet publish %VALIDATOR% %OPTIONS% -r win10-x64
   - cmd: dotnet publish %VALIDATOR% %OPTIONS% -r win7-x86
   - cmd: dotnet publish %VALIDATOR% %OPTIONS% -r osx.10.11-x64
   - cmd: dotnet publish %VALIDATOR% %OPTIONS% -r ubuntu.16.10-x64
+  - cmd: SET BINARIES=.\src\Spectre.DataValidatorApp\bin\%CONFIGURATION%\netcoreapp2.0\
+  - cmd: SET PREFIX=DataValidator-%CONFIGURATION%-thin-
+  - cmd: SET THIN=-xr!publish
+  - cmd: 7z a %PREFIX%win10-x64.zip %THIN% %BINARIES%win10-x64 >nul 2>&1
+  - cmd: 7z a %PREFIX%win7-x86.zip %THIN% %BINARIES%win7-x86 >nul 2>&1
+  - cmd: 7z a %PREFIX%osx.10.11-x64.zip %THIN% %BINARIES%osx.10.11-x64 >nul 2>&1
+  - cmd: 7z a %PREFIX%ubuntu.16.10-x64.zip %THIN% %BINARIES%ubuntu.16.10-x64 >nul 2>&1
+  - cmd: rmdir /s /q C:\projects\platform-components\src\packages
 
 artifacts:
 - path: .\src\Spectre.DataValidatorApp\bin\$(configuration)\netcoreapp2.0\win10-x64\publish
@@ -79,6 +87,8 @@ artifacts:
   name: DataValidator-$(configuration)-self-contained-ubuntu.16.10-x64
 #- path: .\docs\*.pdf
 #  name: Manuals
+- path: '**\*zip'
+  name: Binaries-$(configuration)
 - path: '**\*.nupkg'
   name: NugetPackages-$(configuration)
 
