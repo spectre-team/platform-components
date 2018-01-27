@@ -1,0 +1,23 @@
+language: csharp
+solution: src/platform-components.sln
+mono: none
+dotnet: 2.1.4
+env:
+  matrix:
+  - CONFIGURATION=Debug
+  - CONFIGURATION=Release
+install:
+- dotnet restore src/platform-components.sln
+script:
+- dotnet build -c $CONFIGURATION src/platform-components.sln
+- dotnet test -c $CONFIGURATION --no-build src/Spectre.Data.Tests/Spectre.Data.Tests.csproj
+- dotnet test -c $CONFIGURATION --no-build src/Spectre.Database.Tests/Spectre.Database.Tests.csproj
+notifications:
+  webhooks:
+    urls:
+      secure: yqUaTGtIHKOFqXwhjvw3GiAWOnPJ5J5MruELOKb5KWIuAfgUOGnNWIrgnXjAaG+vhQ5wmBgUrg1f2fyrnN6Tk1g0JxOawIKjG4o6uFdqkzTVqj1iQ3FS+GmolZIv83rzNjn+vxO7mr2LDvkRmgE2MzKEefccj3GTS4G78tfaPD6c1jJB+jHv06C2AnWekDEGmaIt9m+YhzWcQ/66/TF5iGiRwHuWrU2o0rhhTXmbnGHdBOgo7gxqdruSqOasE/JrykRMaobruYGkbVwUbcCEqij8/FjV6itDm0mP/VlLb8dvu6Niv7lEiJt8WiqO6i9oyhfrTQ+Ak8/y0qouZqJn6H0Skq3jQVfrsJLFFIs7LjRfYne0hv89hd9UVsbwJUoxG1UV0RxKnG1xJqwf5G3OrjHunrkX/c+FPw2+pAb6Gt6voxbj5mZ6jTdG+e7OYvI1Dwwc3tyNA9bAN5QG12VJEd2I9TMcIyNC6vfnF+YqJOz2t5B1ZCpKIzNAl5hvrHibIQZnfjUfIyyzyBAwGmPnaK9O80JZhTJzPSZCMiPQyHpyJp9RAjwFCdPQDxqig9FEtydAKocgoWA3akVt4fF5CoXJKDJC1cieGUYpEdyJv24eVHalwqMai/GqyCkhXs51PorcEdBzf9uoxPOh7vXz7dY8wPLY6wdIU9ULpA2EYfg=
+  on_success: always
+  on_failure: always
+  on_start: never
+  on_cancel: never
+  on_error: always
