@@ -1,4 +1,6 @@
-platform: x64
+image: Visual Studio 2017
+platform:
+- Any CPU
 environment:
   nuget_user:
     secure: kWtlS49bKmP0IFXmdvDHmxGI8mS0xQGrwiJoco9nYtA=
@@ -9,7 +11,11 @@ environment:
 configuration:
   - Debug
   - Release
-version: 3.1.0.{build}
+version: 4.0.0.{build}
+skip_tags: true
+# skip branch build if there is an active pull request
+skip_branch_with_pr: true
+max_jobs: 8
 
 init:
 - cmd: echo Project - %APPVEYOR_PROJECT_NAME%
@@ -39,9 +45,14 @@ assembly_info:
   assembly_version: "{version}"
   assembly_file_version: "{version}"
   assembly_informational_version: "{version}"
-
-# skip branch build if there is an active pull request
-skip_branch_with_pr: true
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
 
 build:
   parallel: true
@@ -51,16 +62,15 @@ build:
   verbosity: quiet
 
 after_build:
-  - cmd: nuget pack C:\projects\platform-components\src\Spectre.Service\Spectre.Service.csproj -IncludeReferencedProjects -Version %APPVEYOR_BUILD_VERSION%
-  - cmd: nuget pack C:\projects\platform-components\src\Spectre.Mvvm\Spectre.Mvvm.csproj -IncludeReferencedProjects -Version %APPVEYOR_BUILD_VERSION%
+#  - cmd: nuget pack C:\projects\platform-components\src\Spectre.Service\Spectre.Service.csproj -IncludeReferencedProjects -Version %APPVEYOR_BUILD_VERSION%
   - cmd: rmdir /s /q C:\projects\platform-components\src\packages
 
 
 artifacts:
-- path: .\src\Spectre.DataValidatorApp\bin\$(platform)\$(configuration)
-  name: DataValidator-$(configuration)
-- path: .\docs\*.pdf
-  name: Manuals
+#- path: .\src\Spectre.DataValidatorApp\bin\$(platform)\$(configuration)
+#  name: DataValidator-$(configuration)
+#- path: .\docs\*.pdf
+#  name: Manuals
 - path: '**\*.nupkg'
   name: NugetPackages-$(configuration)
 
@@ -118,7 +128,7 @@ notifications:
       "icon": "https://www.appveyor.com/assets/img/appveyor-logo-256.png",
       "activity": "AppVeyor for platform-components",
       "title": "Build {{buildVersion}} **{{#failed}}failed{{/failed}}{{#passed}}passed{{/passed}}** in {{duration}}",
-      "body": "{{#isPullRequest}}Pull request: [#{{pullRequestId}}](https://github.com/spectre-team/spectre/pull/{{pullRequestId}})\n{{/isPullRequest}}Branch: [{{branch}}](https://github.com/spectre-team/spectre/tree/{{branch}})\nCommit: [{{commitId}} {{commitMessage}}](https://github.com/spectre-team/spectre/commit/{{commitId}})\nAuthor: {{commitAuthor}}\n[Build details]({{buildUrl}})"
+      "body": "{{#isPullRequest}}Pull request: [#{{pullRequestId}}](https://github.com/spectre-team/platform-components/pull/{{pullRequestId}})\n{{/isPullRequest}}Branch: [{{branch}}](https://github.com/spectre-team/platform-components/tree/{{branch}})\nCommit: [{{commitId}} {{commitMessage}}](https://github.com/spectre-team/platform-components/commit/{{commitId}})\nAuthor: {{commitAuthor}}\n[Build details]({{buildUrl}})"
     }
   on_build_success: true
   on_build_failure: true
