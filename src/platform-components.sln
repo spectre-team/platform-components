@@ -30,9 +30,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{CCEC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.DataValidatorApp.Deprecated", "Spectre.DataValidatorApp.Deprecated\Spectre.DataValidatorApp.Deprecated.csproj", "{3D932849-312C-473C-B74C-ABD1F11A0739}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Data", "Spectre.Data\Spectre.Data.csproj", "{B15113CC-92AF-4AE1-ACB8-78F70E5550E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spectre.Data", "Spectre.Data\Spectre.Data.csproj", "{B15113CC-92AF-4AE1-ACB8-78F70E5550E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Data.Tests", "Spectre.Data.Tests\Spectre.Data.Tests.csproj", "{6CF8EF8E-45EC-4912-A0DB-EE75B07DB557}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spectre.Data.Tests", "Spectre.Data.Tests\Spectre.Data.Tests.csproj", "{6CF8EF8E-45EC-4912-A0DB-EE75B07DB557}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Database", "Spectre.Database\Spectre.Database.csproj", "{7EEDD0CB-9705-4F9B-B38A-6764187ED414}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Database.Tests", "Spectre.Database.Tests\Spectre.Database.Tests.csproj", "{AEA5DB3C-2036-4225-B5CB-B809CF420345}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +84,14 @@ Global
 		{6CF8EF8E-45EC-4912-A0DB-EE75B07DB557}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CF8EF8E-45EC-4912-A0DB-EE75B07DB557}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CF8EF8E-45EC-4912-A0DB-EE75B07DB557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EEDD0CB-9705-4F9B-B38A-6764187ED414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EEDD0CB-9705-4F9B-B38A-6764187ED414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EEDD0CB-9705-4F9B-B38A-6764187ED414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EEDD0CB-9705-4F9B-B38A-6764187ED414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEA5DB3C-2036-4225-B5CB-B809CF420345}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA5DB3C-2036-4225-B5CB-B809CF420345}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEA5DB3C-2036-4225-B5CB-B809CF420345}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEA5DB3C-2036-4225-B5CB-B809CF420345}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <ApplicationIcon>Spectre.ico</ApplicationIcon>
+    <Version>4.0.0</Version>
+    <Authors>The Spectre Team</Authors>
+    <Company>The Spectre Team</Company>
+    <Description>Elements responsible for database-related stuff.
+
+Checks user permissions regarding datasets. Preserves information about relations between datasets.</Description>
+    <Copyright>The Spectre Team</Copyright>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.zaed.aei.polsl.pl/index.php/pl/53-laboratorium-5</PackageProjectUrl>
+    <PackageIconUrl>https://user-images.githubusercontent.com/1897842/35470997-bcc4d00e-0353-11e8-81ff-9e1a26a615b8.jpg</PackageIconUrl>
+    <RepositoryUrl>https://github.com/spectre-team/platform-components</RepositoryUrl>
+    <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <FileVersion>4.0.0.0</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
+  </ItemGroup>
+
+</Project>
