@@ -7,14 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Data.Deprecated", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Data.Deprecated.Tests", "Spectre.Data.Deprecated.Tests\Spectre.Data.Deprecated.Tests.csproj", "{01391E76-3D20-4B4B-B727-2A133B35A144}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Service.Deprecated", "Spectre.Service.Deprecated\Spectre.Service.Deprecated.csproj", "{287A1A8D-C029-4D47-96BC-755C91B7985D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{B5B60F79-653C-4E41-9721-06C478CE9E7C} = {B5B60F79-653C-4E41-9721-06C478CE9E7C}
-		{70C87AF7-3189-4F6C-AC85-93309CF7CFDC} = {70C87AF7-3189-4F6C-AC85-93309CF7CFDC}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Service.Deprecated.Tests", "Spectre.Service.Deprecated.Tests\Spectre.Service.Deprecated.Tests.csproj", "{1D79FD14-1DF4-4AED-94DF-62E595206DEF}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9660DC51-B40B-454B-84B7-7FF830DA2D34}"
 	ProjectSection(SolutionItems) = preProject
 		CSharpCodingConvention.ruleset = CSharpCodingConvention.ruleset
@@ -34,9 +26,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spectre.Data", "Spectre.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spectre.Data.Tests", "Spectre.Data.Tests\Spectre.Data.Tests.csproj", "{6CF8EF8E-45EC-4912-A0DB-EE75B07DB557}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Database", "Spectre.Database\Spectre.Database.csproj", "{7EEDD0CB-9705-4F9B-B38A-6764187ED414}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spectre.Database", "Spectre.Database\Spectre.Database.csproj", "{7EEDD0CB-9705-4F9B-B38A-6764187ED414}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Database.Tests", "Spectre.Database.Tests\Spectre.Database.Tests.csproj", "{AEA5DB3C-2036-4225-B5CB-B809CF420345}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spectre.Database.Tests", "Spectre.Database.Tests\Spectre.Database.Tests.csproj", "{AEA5DB3C-2036-4225-B5CB-B809CF420345}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.DataValidatorApp", "Spectre.DataValidatorApp\Spectre.DataValidatorApp.csproj", "{C773C5F9-2CB7-4AC8-97AF-8450F5F39E6B}"
 EndProject
@@ -54,14 +46,6 @@ Global
 		{01391E76-3D20-4B4B-B727-2A133B35A144}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01391E76-3D20-4B4B-B727-2A133B35A144}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01391E76-3D20-4B4B-B727-2A133B35A144}.Release|Any CPU.Build.0 = Release|Any CPU
-		{287A1A8D-C029-4D47-96BC-755C91B7985D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{287A1A8D-C029-4D47-96BC-755C91B7985D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{287A1A8D-C029-4D47-96BC-755C91B7985D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{287A1A8D-C029-4D47-96BC-755C91B7985D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D79FD14-1DF4-4AED-94DF-62E595206DEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D79FD14-1DF4-4AED-94DF-62E595206DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D79FD14-1DF4-4AED-94DF-62E595206DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D79FD14-1DF4-4AED-94DF-62E595206DEF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5B60F79-653C-4E41-9721-06C478CE9E7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B5B60F79-653C-4E41-9721-06C478CE9E7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5B60F79-653C-4E41-9721-06C478CE9E7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
