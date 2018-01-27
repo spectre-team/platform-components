@@ -77,12 +77,6 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Spectre.Data.Deprecated\Spectre.Data.Deprecated.csproj">
-      <Project>{70c87af7-3189-4f6c-ac85-93309cf7cfdc}</Project>
-      <Name>Spectre.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
