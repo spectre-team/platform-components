@@ -67,7 +67,6 @@ after_test:
   - cmd: 7z a %PREFIX%win7-x86.zip %THIN% %BINARIES%win7-x86 >nul 2>&1
   - cmd: 7z a %PREFIX%osx.10.11-x64.zip %THIN% %BINARIES%osx.10.11-x64 >nul 2>&1
   - cmd: 7z a %PREFIX%ubuntu.16.10-x64.zip %THIN% %BINARIES%ubuntu.16.10-x64 >nul 2>&1
-  - cmd: rmdir /s /q C:\projects\platform-components\src\packages
 
 artifacts:
 - path: .\src\Spectre.DataValidatorApp\bin\$(configuration)\netcoreapp2.0\win10-x64\publish
