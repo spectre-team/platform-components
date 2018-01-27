@@ -37,6 +37,12 @@ namespace Spectre.Database.Contexts
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="DatasetsContext"/> class.
+        /// </summary>
+        /// <param name="options">Configuration used for testing purposes.</param>
+        public DatasetsContext(DbContextOptions<DatasetsContext> options) : base(options) { }
+
+        /// <summary>
         /// Gets or sets the datasets.
         /// </summary>
         /// <value>
