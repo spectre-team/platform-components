@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <StartupObject>Spectre.DataValidatorApp.Program</StartupObject>
+    <ApplicationIcon>Spectre.ico</ApplicationIcon>
+    <Version>4.0.0</Version>
+    <Authors>The Spectre Team</Authors>
+    <Company>The Spectre Team</Company>
+    <Description>Application validating text files with data.</Description>
+    <Copyright>The Spectre Team</Copyright>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.zaed.aei.polsl.pl/index.php/pl/53-laboratorium-5</PackageProjectUrl>
+    <PackageIconUrl>https://user-images.githubusercontent.com/1897842/35470997-bcc4d00e-0353-11e8-81ff-9e1a26a615b8.jpg</PackageIconUrl>
+    <RepositoryUrl>https://github.com/spectre-team/platform-components</RepositoryUrl>
+    <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <FileVersion>4.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IO.Abstractions" Version="2.1.0.178" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Spectre.Data\Spectre.Data.csproj" />
+  </ItemGroup>
+
+</Project>
