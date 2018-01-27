@@ -58,8 +58,6 @@ dotnet_csproj:
 build:
   parallel: true
   project: .\src\platform-components.sln
-  publish_nuget: true
-  publish_nuget_symbols: false
   verbosity: quiet
 
 after_build:
